@@ -2,20 +2,21 @@ package main
 
 import (
 	"context"
+	"explore-golang/account"
 	"flag"
 	"fmt"
-	"github.com/go-kit/kit/log"
-	"github.com/go-kit/kit/log/level"
-	"go.mongodb.org/mongo-driver/mongo"
-	"go.mongodb.org/mongo-driver/mongo/options"
-	"gokit-example/account"
 	"net/http"
 	"os"
 	"os/signal"
 	"syscall"
+
+	"github.com/go-kit/kit/log"
+	"github.com/go-kit/kit/log/level"
+	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-const dbsource = "mongodb://localhost:27017"
+const dbsource = "mongodb://mongo:27017"
 
 func main() {
 	var httpAddr = flag.String("http", ":8080", "http listen address")

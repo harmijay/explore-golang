@@ -1,4 +1,4 @@
-module gokit-example
+module explore-golang
 
 go 1.13
 
