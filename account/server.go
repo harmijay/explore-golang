@@ -2,10 +2,9 @@ package account
 
 import (
 	"context"
-	"net/http"
-
-	"github.com/gorilla/mux"
 	httptransport "github.com/go-kit/kit/transport/http"
+	"github.com/gorilla/mux"
+	"net/http"
 )
 
 func NewHTTPServer(ctx context.Context, endpoints Endpoints) http.Handler {

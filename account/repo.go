@@ -18,7 +18,7 @@ type repo struct {
 
 func NewRepo(db *mongo.Database, logger log.Logger) Repository {
 	return &repo{
-		db: db,
+		db:     db,
 		logger: log.With(logger, "repo", "mongodb"),
 	}
 }

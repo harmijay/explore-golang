@@ -2,7 +2,6 @@ package account
 
 import (
 	"context"
-
 	"github.com/go-kit/kit/endpoint"
 )
 
