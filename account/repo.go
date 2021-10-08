@@ -5,11 +5,11 @@ import (
 	"errors"
 
 	"github.com/go-kit/kit/log"
-	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/mongo"
 )
 
-var RepoErr = errors.New("Unable to handle Repo Request")
+var RepoErr = errors.New("unable to handle repo request")
 
 type repo struct {
 	db     *mongo.Database
