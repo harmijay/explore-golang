@@ -6,14 +6,16 @@ import (
 )
 
 type Endpoints struct {
-	CreateUser endpoint.Endpoint
-	GetUser    endpoint.Endpoint
+	CreateUser 	endpoint.Endpoint
+	GetUser    	endpoint.Endpoint
+	GetAllUsers	endpoint.Endpoint
 }
 
 func MakeEndpoints(s Service) Endpoints {
 	return Endpoints{
-		CreateUser: makeCreateUserEndpoint(s),
-		GetUser:    makeGetUserEndpoint(s),
+		CreateUser: 	makeCreateUserEndpoint(s),
+		GetUser:    	makeGetUserEndpoint(s),
+		GetAllUsers: 	makeGetAllUsersEndpoint(s),
 	}
 }
 
@@ -32,6 +34,15 @@ func makeGetUserEndpoint(s Service) endpoint.Endpoint {
 
 		return GetUserResponse{
 			Email: email,
+		}, err
+	}
+}
+
+func makeGetAllUsersEndpoint(s Service) endpoint.Endpoint {
+	return func(ctx context.Context, request interface{}) (interface{}, error) {
+		users, err := s.GetAllUsers(ctx)
+		return GetAllUserResponse{
+			Users: users,
 		}, err
 	}
 }

@@ -44,3 +44,21 @@ func (repo *repo) GetUser(ctx context.Context, id string) (string, error) {
 
 	return user.Email, nil
 }
+
+func (repo *repo) GetAllUsers(ctx context.Context) ([]User, error) {
+	var users []User
+	cursor, err := repo.db.Collection("users").Find(ctx, bson.M{})
+	if err != nil {
+		return nil, RepoErr
+	}
+	defer cursor.Close(ctx)
+	for cursor.Next(ctx) {
+		var user User
+		if err = cursor.Decode(&user); err != nil {
+			return nil, RepoErr
+		}
+		users = append(users, user)
+	}
+
+	return users, nil
+}
