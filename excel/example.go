@@ -118,8 +118,21 @@ func readExample() {
 	fmt.Printf("%v \n", rows)
 }
 
+func readMergedCell() {
+	xlsx, err := excelize.OpenFile("./ipk_lulusan.xlsx")
+	if err != nil {
+		log.Fatal("ERROR", err.Error())
+	}
+
+	sheet1Name := "Tabel 8.a"
+
+	//Merged cell: C1, D1, E1
+	fmt.Printf("%v \n", xlsx.GetCellValue(sheet1Name, fmt.Sprintf("D1")))
+}
+
 func runExample() {
 	writeExample()
 	writeExample2()
 	readExample()
+	readMergedCell()
 }
