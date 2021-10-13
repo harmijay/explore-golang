@@ -23,6 +23,12 @@ func NewHTTPServer(ctx context.Context, endpoints Endpoints) http.Handler {
 		encodeResponse,
 	))
 
+	r.Methods("GET").Path("/user").Handler(httptransport.NewServer(
+		endpoints.GetAllUsers,
+		decodePew,
+		encodeResponse,
+	))
+
 	return r
 
 }

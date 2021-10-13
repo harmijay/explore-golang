@@ -23,8 +23,14 @@ type (
 	GetUserResponse struct {
 		Email string `json:"email"`
 	}
-)
 
+	GetAllUsersRequest struct {
+
+	}
+	GetAllUserResponse struct {
+		Users []User `json:"users"`
+	}
+)
 
 func encodeResponse(ctx context.Context, w http.ResponseWriter, response interface{}) error {
 	return json.NewEncoder(w).Encode(response)
@@ -49,3 +55,6 @@ func decodeEmailReq(ctx context.Context, r *http.Request) (interface{}, error) {
 	return req, nil
 }
 
+func decodePew(ctx context.Context, r *http.Request) (interface{}, error) {
+	return GetAllUsersRequest{}, nil
+}
